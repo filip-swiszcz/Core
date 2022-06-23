@@ -1,0 +1,11 @@
+# Database
+mysql:
+  name: 'table'
+  user: 'root'
+  password: 'password'
+# Amount of asset player get when join server for first time
+assets:
+  coins: 200
+  emeralds: 0
+  netherite: 0
+  diamonds: 0
