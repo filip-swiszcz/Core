@@ -7,7 +7,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import pl.mcsu.core.gui.listener.ClickListener;
+import pl.mcsu.core.listener.ClickListener;
+import pl.mcsu.core.listener.JoinListener;
+import pl.mcsu.core.listener.PlaceListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,9 +45,9 @@ public class Core extends JavaPlugin {
     /**
      * Stores retrieved settings
      * */
-    private final Map<String, Object[]> settingsMap = new HashMap<>();
+    private final Map<String, Object> settingsMap = new HashMap<>();
 
-    public Map<String, Object[]> getSettingsMap() {
+    public Map<String, Object> getSettingsMap() {
         return settingsMap;
     }
 
@@ -89,6 +91,8 @@ public class Core extends JavaPlugin {
 
     private void setListeners() {
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new PlaceListener(), this);
     }
 
     private void setSettings() {
@@ -97,12 +101,10 @@ public class Core extends JavaPlugin {
         mysql[1] = getConfig().get("mysql.user");
         mysql[2] = getConfig().get("mysql.password");
         settingsMap.put("mysql", mysql);
-        Object[] assets = new Object[4];
-        assets[0] = getConfig().get("assets.coins");
-        assets[1] = getConfig().get("assets.emeralds");
-        assets[2] = getConfig().get("assets.netherite");
-        assets[3] = getConfig().get("assets.diamonds");
-        settingsMap.put("assets", assets);
+        int coins = getConfig().getInt("coins");
+        settingsMap.put("coins", coins);
+        int limit = getConfig().getInt("limit");
+        settingsMap.put("limit", limit);
     }
 
     /**
@@ -112,95 +114,5 @@ public class Core extends JavaPlugin {
     public @Override void onDisable() {
 
     }
-
-
-    /**
-     * Sets if GUI click should be automatically
-     * canceled by default. Which prevents from item(button)
-     * being taken by a player.
-     * */
-    //private boolean cancelInventoryClick = true;
-
-    /**
-     * Builds default buttons which give player access
-     * to move through GUI.
-     * */
-    /*private PageService defaultButtonsBuilder = (type, inventory) -> {
-        switch (type) {
-            case PREVIOUS:
-                if (inventory.getPage() > 0) return new Button(new Item(Material.ARROW)
-                        .displayName(Label.PREVIOUS)
-                        .build()
-                ).click(event -> {
-                    event.setCancelled(true);
-                    inventory.previousPage(event.getWhoClicked());
-                });
-            case CURRENT:
-                return new Button(new Item(Material.NETHER_STAR)
-                        .displayName(Label.CURRENT)
-                        .build()
-                ).click(event -> event.setCancelled(true));
-            case NEXT:
-                if (inventory.getPage() < inventory.getLastPage() - 1) return new Button(new Item(Material.ARROW)
-                        .displayName(Label.NEXT)
-                        .build()
-                ).click(event -> {
-                    event.setCancelled(true);
-                    inventory.nextPage(event.getWhoClicked());
-                });
-            case UNASSIGNED:
-            default:
-                return null;
-        }
-    };*/
-
-    /**
-     * Creates an instance of Core library
-     * which is not a standalone plugin.
-     * */
-    /*public Core(JavaPlugin plugin) {
-        this.plugin = plugin;
-        setListeners();
-    }
-
-    public JavaPlugin getPlugin() {
-        return plugin;
-    }*/
-
-    /**
-     * GUI's icons click cancellation
-     * */
-    /*public boolean isCancelInventoryClick() {
-        return cancelInventoryClick;
-    }
-
-    public void setCancelInventoryClick(boolean cancelInventoryClick) {
-        this.cancelInventoryClick = cancelInventoryClick;
-    }*/
-
-    /**
-     * Default GUI buttons
-     * */
-    /*public PageService getDefaultButtonsBuilder() {
-        return defaultButtonsBuilder;
-    }
-
-    public void setDefaultButtonsBuilder(PageService defaultButtonsBuilder) {
-        this.defaultButtonsBuilder = defaultButtonsBuilder;
-    }*/
-
-    /**
-     * Registers listeners
-     * */
-    /*private void setListeners() {
-        //plugin.getServer().getPluginManager().registerEvents();
-    }*/
-
-    /**
-     * Creates GUI
-     * */
-    /*public GUI create(Component name, int rows) {
-        return new GUI(plugin, this, name, rows);
-    }*/
 
 }

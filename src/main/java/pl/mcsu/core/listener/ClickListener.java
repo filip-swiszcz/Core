@@ -1,10 +1,10 @@
-package pl.mcsu.core.gui.listener;
+package pl.mcsu.core.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import pl.mcsu.core.gui.GUI;
-import pl.mcsu.core.gui.model.Button;
+import pl.mcsu.core.model.gui.Button;
+import pl.mcsu.core.model.gui.GUI;
 
 import java.util.Objects;
 

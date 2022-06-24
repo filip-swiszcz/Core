@@ -1,4 +1,4 @@
-package pl.mcsu.core.gui.model;
+package pl.mcsu.core.model.gui;
 
 import java.util.ArrayList;
 import java.util.List;

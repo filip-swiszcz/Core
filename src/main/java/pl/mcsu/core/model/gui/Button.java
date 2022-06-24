@@ -1,4 +1,4 @@
-package pl.mcsu.core.gui.model;
+package pl.mcsu.core.model.gui;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -6,22 +6,22 @@ import org.bukkit.inventory.ItemStack;
 public class Button {
 
     private final ItemStack button;
-    private Click click;
+    private Button.Click click;
 
     public Button(ItemStack itemStack) {
         this.button = itemStack;
     }
 
-    public Button click(Click click) {
+    public Button click(Button.Click click) {
         this.click = click;
         return this;
     }
 
-    public Click getClick() {
+    public Button.Click getClick() {
         return click;
     }
 
-    public void setClick(Click click) {
+    public void setClick(Button.Click click) {
         this.click = click;
     }
 

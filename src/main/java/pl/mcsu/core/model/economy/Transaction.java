@@ -1,4 +1,4 @@
-package pl.mcsu.core.economy.model;
+package pl.mcsu.core.model.economy;
 
 import java.util.UUID;
 

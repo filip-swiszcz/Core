@@ -16,12 +16,12 @@ public class Icon {
 
     private final ItemStack itemStack;
 
-    public Icon(Material material) {
-        this(material, 1);
+    public Icon() {
+        this(1);
     }
 
-    public Icon(Material material, int amount) {
-        this.itemStack = new ItemStack(material, amount);
+    public Icon(int amount) {
+        this.itemStack = new ItemStack(Material.PLAYER_HEAD, amount);
     }
 
     public Icon value(String value) {
