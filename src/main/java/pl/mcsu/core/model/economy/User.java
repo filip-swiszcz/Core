@@ -1,6 +1,5 @@
 package pl.mcsu.core.model.economy;
 
-
 import pl.mcsu.core.Core;
 
 import java.util.ArrayList;
@@ -16,8 +15,8 @@ public class User {
 
     public User(UUID uuid) {
         this.uuid = uuid;
-        this.coins = (int) Core.getInstance().getSettingsMap().get("coins");
-        this.limit = (int) Core.getInstance().getSettingsMap().get("limit");
+        this.coins = Core.getInstance().getDefaultCoins();
+        this.limit = Core.getInstance().getCoinsLimit();
         this.history = new ArrayList<>();
     }
 
@@ -33,13 +32,15 @@ public class User {
         this.coins = coins;
     }
 
-    public void addCoins(int coins) {
-        this.coins = this.coins + coins;
+    public void addCoins(int amount) {
+        if (amount == 0) return;
+        this.coins = coins + amount;
     }
 
-    public void removeCoins(int coins) {
-        if (coins > this.coins) return;
-        this.coins = this.coins - coins;
+    public void removeCoins(int amount) {
+        if (amount == 0) return;
+        if (amount > coins) return;
+        this.coins = coins - amount;
     }
 
     public int getLimit() {

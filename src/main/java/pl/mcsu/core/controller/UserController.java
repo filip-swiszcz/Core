@@ -20,7 +20,6 @@ public class UserController {
     /**
      * User controller
      * */
-
     public User getUser(UUID uuid) {
         return UserRepository.getInstance().getUserMap().get(uuid);
     }

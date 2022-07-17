@@ -17,12 +17,12 @@ public class Label {
     /**
      * GUI buttons labels
      * */
-    public static Component CLOSE = Component.text()
-            .append(Component.text("Zamknij", Color.GRAY))
-            .decoration(TextDecoration.ITALIC, false)
-            .build();
     public static Component PREVIOUS = Component.text()
             .append(Component.text("Poprzednia strona", Color.GRAY))
+            .decoration(TextDecoration.ITALIC, false)
+            .build();
+    public static Component CLOSE = Component.text()
+            .append(Component.text("Zamknij", Color.GRAY))
             .decoration(TextDecoration.ITALIC, false)
             .build();
     public static Component NEXT = Component.text()

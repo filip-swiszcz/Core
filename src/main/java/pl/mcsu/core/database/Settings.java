@@ -9,10 +9,9 @@ public class Settings {
     public final HikariDataSource hikariDataSource = new HikariDataSource(getHikariConfig());
 
     private HikariConfig getHikariConfig() {
-        Object[] mysql = (Object[]) Core.getInstance().getSettingsMap().get("mysql");
-        String name = (String) mysql[0];
-        String user = (String) mysql[1];
-        String password = (String) mysql[2];
+        String name = Core.getInstance().getMySQLName();
+        String user = Core.getInstance().getMySQLUser();
+        String password = Core.getInstance().getMySQLPassword();
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/" + name);
         hikariConfig.setUsername(user);

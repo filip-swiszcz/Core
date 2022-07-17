@@ -19,9 +19,8 @@ public class UserRepository {
     }
 
     /**
-     * User repository
+     * Stores created users
      * */
-
     private final Map<UUID, User> userMap = new HashMap<>();
 
     public Map<UUID, User> getUserMap() {

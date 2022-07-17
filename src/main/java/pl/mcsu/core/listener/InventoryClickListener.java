@@ -8,10 +8,10 @@ import pl.mcsu.core.model.gui.GUI;
 
 import java.util.Objects;
 
-public class ClickListener implements Listener {
+public class InventoryClickListener implements Listener {
 
     @EventHandler
-    public void click(InventoryClickEvent event) {
+    public void onInventoryClick(InventoryClickEvent event) {
         if (event.getInventory().getHolder() == null) return;
         if (!(event.getInventory().getHolder() instanceof GUI gui)) return;
         event.setCancelled(true);

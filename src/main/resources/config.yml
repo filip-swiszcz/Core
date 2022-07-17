@@ -3,7 +3,13 @@ mysql:
   name: 'table'
   user: 'root'
   password: 'password'
-# Amount of coins player get when join server for first time
-coins: 200
-# Default limit of coins player can store in bank
-limit: 2000000
+# Economy settings
+economy:
+  # Amount of coins player get when join server for first time
+  coins: 0
+  # Default limit of coins player can store in bank
+  limit: 2000000
+# Gui settings
+gui:
+# Npc settings
+npc:
